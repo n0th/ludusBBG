@@ -259,6 +259,7 @@ namespace BoardGameGeekJsonApi
                                                               Expands = SetExpandsLinks(Boardgame),
                                                               Expansions = SetExpansionsLinks(Boardgame),
                                                               Mechanics = (from p in Boardgame.Element("item").Elements("link") where p.Attribute("type").Value == "boardgamemechanic" select p.Attribute("value").Value).ToList(),
+                                                              Categories = (from i in Boardgame.Element("item").Elements("link") where i.Attribute("type").Value == "boardgamecategory" select i.Attribute("value").Value).ToList(),
                                                               Image = Boardgame.Element("item").Element("image") != null ? Boardgame.Element("item").Element("image").Value : string.Empty,
                                                               IsExpansion = SetIsExpansion(Boardgame),
                                                               Thumbnail = Boardgame.Element("item").Element("thumbnail") != null ? Boardgame.Element("item").Element("thumbnail").Value : string.Empty,
